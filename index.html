@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assetto Corsa Mobile - Download the Game</title>
-    <meta name="description" content="Download Assetto Corsa Mobile - The best mobile racing game">
+    <title>Assetto Corsa Mobile - تحميل اللعبة</title>
+    <meta name="description" content="Download Assetto Corsa Mobile - أفضل لعبة سباقات للموبايل">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -112,6 +112,7 @@
             color: #fff;
             font-size: 1.5rem;
             cursor: pointer;
+            z-index: 1001; /* Ensure it's above the nav links on mobile */
         }
 
         /* Hero Section */
@@ -130,10 +131,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMCAwSDE5MjBWMTA4MEgwVjBaIiBmaWxsPSIjMTExIi8+CjxwYXRoIGQ9Ik0wIDU0MEwxOTIwIDAgVjEwODBMMCAxMDgwVjU0MFoiIGZpbGw9InVybCgjZ3JhZGllbnQpIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZjZiMzUiLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWUwMDMzIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+') center/cover;
+            background: url('https://images.alphacoders.com/132/1329272.jpeg') center/cover;
             z-index: -2;
+            opacity: 0.3;
         }
-
+        
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -906,6 +908,18 @@
             
             .nav-links {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                padding: 2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.mobile-open {
+                display: flex; /* This is the fix to show the menu */
             }
             
             .hero-content {
@@ -1051,7 +1065,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <nav class="navbar">
             <div class="container">
@@ -1059,11 +1072,11 @@
                     <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDQwQzMxLjA0NTcgNDAgNDAgMzEuMDQ1NyA0MCAyMEM0MCA4Ljk1NDMgMzEuMDQ1NyAwIDIwIDBDOC45NTQzIDAgMCA4Ljk1NDMgMCAyMEMwIDMxLjA0NTcgOC45NTQzIDQwIDIwIDQwWiIgZmlsbD0iIzAwNzFGRiIvPgo8cGF0aCBkPSJNMjguNTcxNCAyOC41NzE0TDE2IDE2VjI4SDI4LjU3MTRaIiBmaWxsPSIjRkZGRkZGIi8+Cjwvc3ZnPgo=" alt="AC Mobile Logo" class="logo">
                     <span class="brand-text">Assetto Corsa Mobile</span>
                 </div>
-                <div class="nav-links">
-                    <a href="#features" class="nav-link">Features</a>
-                    <a href="#download" class="nav-link">Download</a>
-                    <a href="#setup" class="nav-link">Setup Guide</a>
-                </div>
+                <ul class="nav-links">
+                    <li><a href="#features" class="nav-link">المميزات</a></li>
+                    <li><a href="#download" class="nav-link">التحميل</a></li>
+                    <li><a href="#setup" class="nav-link">دليل الإعداد</a></li>
+                </ul>
                 <div class="mobile-menu-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -1071,65 +1084,62 @@
         </nav>
     </header>
 
-    <!-- Instructions Banner -->
     <section class="instructions-banner" id="setup">
         <div class="container">
             <div class="instructions-content">
                 <h2 class="instructions-title">
                     <i class="fas fa-info-circle"></i>
-                    How to Add Your Download Link
+                    كيفية إضافة رابط التحميل الخاص بك
                 </h2>
                 <p class="instructions-text">
-                    📝 <strong>Setup Instructions:</strong> When you click any download button for the first time, a popup will appear asking for your locker/download link. Simply paste your link there and click "Save". All download buttons will then redirect to your custom link automatically!
+                    📝 <strong>تعليمات الإعداد:</strong> عند الضغط على أي زر تحميل لأول مرة، ستظهر نافذة تطلب رابط التحميل الخاص بك. قم بلصق الرابط هناك واضغط "حفظ". جميع أزرار التحميل ستقوم بالتحويل إلى رابطك المخصص تلقائيًا!
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-background">
-            <div class="hero-overlay"></div>
-        </div>
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        <span class="hero-subtitle">Experience the Ultimate Racing</span>
+                        <span class="hero-subtitle">جرّب تجربة السباق المطلقة</span>
                         <span class="main-title">Assetto Corsa Mobile</span>
                     </h1>
                     <p class="hero-description">
-                        Experience the best mobile racing simulator with realistic physics, diverse tracks, 
-                        and enjoy premium cars in exciting, unforgettable races.
+                        استمتع بأفضل محاكي سباقات على الموبايل مع فيزياء واقعية، مسارات متنوعة، 
+                        وتمتع بسيارات فاخرة في سباقات مثيرة لا تُنسى.
                     </p>
                     <div class="hero-buttons">
                         <button class="btn btn-primary download-btn" id="downloadBtn">
                             <i class="fas fa-download"></i>
-                            Download Now
+                            حمّل الآن
                         </button>
                         <button class="btn btn-secondary" onclick="playTrailer()">
                             <i class="fas fa-play"></i>
-                            Watch Trailer
+                            شاهد العرض
                         </button>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
                             <div class="stat-number">50+</div>
-                            <div class="stat-label">Unique Cars</div>
+                            <div class="stat-label">سيارة فريدة</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">20+</div>
-                            <div class="stat-label">Different Tracks</div>
+                            <div class="stat-label">مسار سباق</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">1M+</div>
-                            <div class="stat-label">Players Worldwide</div>
+                            <div class="stat-label">لاعب حول العالم</div>
                         </div>
                     </div>
                 </div>
                 <div class="hero-image">
                     <div class="game-screenshot">
-                        <img src="https://i.ytimg.com/vi/2TzDXFNa0Dw/maxresdefault.jpg" alt="Assetto Corsa Mobile Screenshot" class="screenshot-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTEwIi8+CjxwYXRoIGQ9Ik0xMDAgMjAwSDQwMEwzNTAgMTAwSDUwTDEwMCAyMDBaIiBmaWxsPSIjRUUwMDMzIi8+CjxjaXJjbGUgY3g9IjEyMCIgY3k9IjIzMCIgcj0iMjAiIGZpbGw9IiMzMzMiLz4KPGNOCMXMZS5jVz0iMzMwIiBjeT0iMjMwIiByPSIyMCIgZmlsbD0iIzMzMyIvPgo8dGV4dCB4PSIyNTAiIHk9IjUwIiBmaWxsPSIjRkZGIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFzc2V0dG8gQ29yc2EgTW9iaWxlPC90ZXh0Pgo8L3N2Zz4K';">
+                        <img src="https://www.gran-turismo.com/gtsport/de/gallery/all/livery/2099391/1/7208460155280458768" alt="Assetto Corsa Mobile Screenshot" class="screenshot-img">
                         <div class="screenshot-overlay">
                             <div class="play-button" onclick="playTrailer()">
                                 <i class="fas fa-play"></i>
@@ -1141,10 +1151,9 @@
         </div>
     </section>
 
-    <!-- Video Section -->
     <section class="video-section">
         <div class="container">
-            <h2 class="section-title">Watch the Official Trailer</h2>
+            <h2 class="section-title">شاهد العرض الرسمي</h2>
             <div class="video-container">
                 <div class="video-wrapper">
                     <iframe id="gameTrailer" 
@@ -1156,20 +1165,20 @@
                     </iframe>
                 </div>
                 <div class="video-info">
-                    <h3>Experience Console-Quality Racing</h3>
-                    <p>Watch the official gameplay trailer and see why Assetto Corsa Mobile is the most realistic racing simulator available for mobile devices.</p>
+                    <h3>تجربة سباق بجودة الكونسول</h3>
+                    <p>شاهد عرض اللعب الرسمي وانظر لماذا يعتبر Assetto Corsa Mobile هو محاكي السباقات الأكثر واقعية المتاح للأجهزة المحمولة.</p>
                     <div class="video-stats">
                         <div class="video-stat">
                             <i class="fas fa-eye"></i>
-                            <span>2.5M+ Views</span>
+                            <span>2.5 مليون+ مشاهدة</span>
                         </div>
                         <div class="video-stat">
                             <i class="fas fa-thumbs-up"></i>
-                            <span>45K+ Likes</span>
+                            <span>45 ألف+ إعجاب</span>
                         </div>
                         <div class="video-stat">
                             <i class="fas fa-share"></i>
-                            <span>Share</span>
+                            <span>مشاركة</span>
                         </div>
                     </div>
                 </div>
@@ -1177,113 +1186,108 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">Game Features</h2>
+            <h2 class="section-title">مميزات اللعبة</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-car"></i>
                     </div>
-                    <h3 class="feature-title">Real Cars</h3>
-                    <p class="feature-description">Over 50 licensed cars from famous global brands like Ferrari, Lamborghini, and Porsche</p>
+                    <h3 class="feature-title">سيارات حقيقية</h3>
+                    <p class="feature-description">أكثر من 50 سيارة مرخصة من أشهر الماركات العالمية مثل فيراري، لامبورغيني، وبورشه.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-road"></i>
                     </div>
-                    <h3 class="feature-title">Diverse Tracks</h3>
-                    <p class="feature-description">20+ racing tracks from around the world with detailed graphics and high-quality visuals</p>
+                    <h3 class="feature-title">مسارات متنوعة</h3>
+                    <p class="feature-description">أكثر من 20 حلبة سباق من جميع أنحاء العالم برسومات مفصلة ومرئيات عالية الجودة.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-cog"></i>
                     </div>
-                    <h3 class="feature-title">Realistic Physics</h3>
-                    <p class="feature-description">Advanced physics system that simulates real car behavior with precise and flexible control</p>
+                    <h3 class="feature-title">فيزياء واقعية</h3>
+                    <p class="feature-description">نظام فيزيائي متقدم يحاكي سلوك السيارة الحقيقي بتحكم دقيق ومرن.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="feature-title">Multiplayer Racing</h3>
-                    <p class="feature-description">Race with friends or players from around the world in exciting and diverse matches</p>
+                    <h3 class="feature-title">سباق متعدد اللاعبين</h3>
+                    <p class="feature-description">تسابق مع الأصدقاء أو لاعبين من جميع أنحاء العالم في مباريات مثيرة ومتنوعة.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3 class="feature-title">Car Customization</h3>
-                    <p class="feature-description">Customize your car with different colors and stickers, and improve performance for best results</p>
+                    <h3 class="feature-title">تخصيص السيارات</h3>
+                    <p class="feature-description">خصص سيارتك بألوان وملصقات مختلفة، وقم بتحسين الأداء للحصول على أفضل النتائج.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
-                    <h3 class="feature-title">Championships & Rewards</h3>
-                    <p class="feature-description">Participate in various championships and win valuable prizes to upgrade cars and unlock new content</p>
+                    <h3 class="feature-title">بطولات وجوائز</h3>
+                    <p class="feature-description">شارك في بطولات متنوعة واربح جوائز قيمة لترقية السيارات وفتح محتوى جديد.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Download Section -->
     <section id="download" class="download">
         <div class="container">
-            <!-- Game Preview Image -->
             <div class="download-game-preview">
                 <div class="preview-image-container">
-                    <img src="https://i.ytimg.com/vi/2TzDXFNa0Dw/maxresdefault.jpg" 
+                    <img src="https://preview.redd.it/4k-assetto-corsa-screenshot-v0-wr0gsx3h97va1.png?width=3840&format=png&auto=webp&s=d27f71f1a0a582312d8a5f403e1b7f2f170f05f7" 
                          alt="Assetto Corsa Mobile Gameplay" 
-                         class="preview-game-image"
-                         onerror="this.src='https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg';">
+                         class="preview-game-image">
                     <div class="preview-badge">
                         <i class="fas fa-star"></i>
-                        <span>Premium Racing Experience</span>
+                        <span>تجربة سباق مميزة</span>
                     </div>
                 </div>
             </div>
 
             <div class="download-content">
-                <h2 class="section-title">Download the Game Now</h2>
+                <h2 class="section-title">حمّل اللعبة الآن</h2>
                 <p class="download-description">
-                    Start your adventure in the exciting world of racing with Assetto Corsa Mobile
+                    ابدأ مغامرتك في عالم السباقات المثير مع Assetto Corsa Mobile
                 </p>
                 
-                <!-- Download Options -->
                 <div class="download-options">
                     <div class="download-option">
                         <div class="option-header">
-                            <h3>Free Version</h3>
-                            <span class="price">FREE</span>
+                            <h3>النسخة المجانية</h3>
+                            <span class="price">مجاناً</span>
                         </div>
                         <div class="option-features">
-                            <div class="feature">✓ 10 Cars</div>
-                            <div class="feature">✓ 5 Tracks</div>
-                            <div class="feature">✓ Single Player Mode</div>
+                            <div class="feature">✓ 10 سيارات</div>
+                            <div class="feature">✓ 5 مسارات</div>
+                            <div class="feature">✓ وضع اللعب الفردي</div>
                         </div>
                         <button class="btn btn-outline download-btn" data-version="free">
                             <i class="fas fa-download"></i>
-                            Free Download
+                            تحميل مجاني
                         </button>
                     </div>
                     
                     <div class="download-option featured">
-                        <div class="option-badge">Most Popular</div>
+                        <div class="option-badge">الأكثر شعبية</div>
                         <div class="option-header">
-                            <h3>Full Version</h3>
+                            <h3>النسخة الكاملة</h3>
                             <span class="price">$9.99</span>
                         </div>
                         <div class="option-features">
-                            <div class="feature">✓ All Cars (50+)</div>
-                            <div class="feature">✓ All Tracks (20+)</div>
-                            <div class="feature">✓ Multiplayer Mode</div>
-                            <div class="feature">✓ Free Updates</div>
+                            <div class="feature">✓ جميع السيارات (+50)</div>
+                            <div class="feature">✓ جميع المسارات (+20)</div>
+                            <div class="feature">✓ وضع اللعب الجماعي</div>
+                            <div class="feature">✓ تحديثات مجانية</div>
                         </div>
                         <button class="btn btn-primary download-btn" data-version="premium">
                             <i class="fas fa-download"></i>
-                            Download Full Version
+                            تحميل النسخة الكاملة
                         </button>
                     </div>
                 </div>
@@ -1291,7 +1295,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1300,19 +1303,19 @@
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDQwQzMxLjA0NTcgNDAgNDAgMzEuMDQ1NyA0MCAyMEM0MCA4Ljk1NDMgMzEuMDQ1NyAwIDIwIDBDOC45NTQzIDAgMCA4Ljk1NDMgMCAyMEMwIDMxLjA0NTcgOC45NTQzIDQwIDIwIDQwWiIgZmlsbD0iIzAwNzFGRiIvPgo8cGF0aCBkPSJNMjguNTcxNCAyOC41NzE0TDE2IDE2VjI4SDI4LjU3MTRaIiBmaWxsPSIjRkZGRkZGIi8+Cjwvc3ZnPgo=" alt="AC Mobile" class="footer-logo">
                         <span>Assetto Corsa Mobile</span>
                     </div>
-                    <p>The best mobile racing game</p>
+                    <p>أفضل لعبة سباقات للموبايل</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4>روابط سريعة</h4>
                     <ul class="footer-links">
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#download">Download</a></li>
-                        <li><a href="#setup">Setup Guide</a></li>
-                        <li><a href="#support">Support</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#download">التحميل</a></li>
+                        <li><a href="#setup">دليل الإعداد</a></li>
+                        <li><a href="#support">الدعم</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Follow Us</h4>
+                    <h4>تابعنا</h4>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
@@ -1322,21 +1325,20 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Assetto Corsa Mobile. All rights reserved.</p>
+                <p>&copy; 2024 Assetto Corsa Mobile. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal for Locker Link Setup -->
     <div id="lockerModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Setup Your Download Link</h2>
-            <p>Enter your locker/download link below:</p>
-            <input type="url" id="lockerUrl" placeholder="Paste your download link here..." class="locker-input">
+            <h2>إعداد رابط التحميل</h2>
+            <p>أدخل رابط التحميل الخاص بك أدناه:</p>
+            <input type="url" id="lockerUrl" placeholder="الصق رابط التحميل هنا..." class="locker-input">
             <div class="modal-buttons">
-                <button class="btn btn-primary" onclick="saveLockerUrl()">Save Link</button>
-                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveLockerUrl()">حفظ الرابط</button>
+                <button class="btn btn-secondary" onclick="closeModal()">إلغاء</button>
             </div>
         </div>
     </div>
@@ -1354,6 +1356,8 @@
         const downloadButtons = document.querySelectorAll('.download-btn');
         const closeButton = document.querySelector('.close');
         const lockerInput = document.getElementById('lockerUrl');
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -1389,6 +1393,10 @@
                             block: 'start'
                         });
                     }
+                    // Close mobile menu on link click
+                    if (navLinks.classList.contains('mobile-open')) {
+                        navLinks.classList.remove('mobile-open');
+                    }
                 });
             });
 
@@ -1412,7 +1420,7 @@
             }
             
             // Proceed with download
-            proceedWithDownload(version);
+            proceedWithDownload(event, version);
         }
 
         // Show the locker URL setup modal
@@ -1434,20 +1442,20 @@
             const url = lockerInput.value.trim();
             
             if (!url) {
-                showNotification('Please enter a valid link', 'error');
+                showNotification('الرجاء إدخال رابط صالح', 'error');
                 return;
             }
             
             // Basic URL validation
             if (!isValidUrl(url)) {
-                showNotification('Please enter a valid link (must start with http or https)', 'error');
+                showNotification('الرجاء إدخال رابط صالح (يجب أن يبدأ بـ http أو https)', 'error');
                 return;
             }
             
             lockerUrl = url;
             localStorage.setItem('lockerUrl', url);
             closeModal();
-            showNotification('Download link saved successfully!', 'success');
+            showNotification('تم حفظ رابط التحميل بنجاح!', 'success');
             updateDownloadButtonsState(true);
         }
 
@@ -1475,11 +1483,11 @@
         }
 
         // Proceed with download
-        function proceedWithDownload(version) {
+        function proceedWithDownload(event, version) {
             // Add loading state
             const button = event.target.closest('.download-btn');
             const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جار التحميل...';
             button.disabled = true;
             
             // Simulate download delay
@@ -1491,7 +1499,7 @@
                 trackDownload(version);
                 
                 // Show success message
-                showNotification(`${version === 'premium' ? 'Full Version' : 'Free Version'} download started!`, 'success');
+                showNotification(`بدأ تحميل ${version === 'premium' ? 'النسخة الكاملة' : 'النسخة المجانية'}!`, 'success');
                 
                 // Reset button
                 button.innerHTML = originalText;
@@ -1585,7 +1593,7 @@
                 });
                 
                 // Show notification
-                showNotification('Scrolled to video trailer!', 'info');
+                showNotification('تم التمرير إلى عرض الفيديو!', 'info');
                 
                 // Optional: Start video playback if desired
                 setTimeout(() => {
@@ -1603,18 +1611,12 @@
 
         // Setup mobile menu
         function setupMobileMenu() {
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
-            
             if (!mobileToggle || !navLinks) return;
             
             // Toggle mobile menu
             mobileToggle.addEventListener('click', function(e) {
                 e.stopPropagation();
                 navLinks.classList.toggle('mobile-open');
-                
-                // Animate hamburger
-                this.classList.toggle('active');
             });
         }
 
@@ -1625,7 +1627,7 @@
                 const scrolled = window.pageYOffset;
                 const parallax = document.querySelector('.hero-background');
                 if (parallax) {
-                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+                    parallax.style.transform = `translateY(${scrolled * 0.4}px)`;
                 }
             });
         }
@@ -1662,26 +1664,6 @@
         window.playTrailer = playTrailer;
         window.saveLockerUrl = saveLockerUrl;
         window.closeModal = closeModal;
-
-        // ========================================
-        // HOW TO CUSTOMIZE YOUR DOWNLOAD LINK:
-        // ========================================
-        
-        /* 
-        OPTION 1: Manual Setup via Console
-        Open browser console (F12) and type:
-        adminPanel.setLockerUrl('YOUR_DOWNLOAD_LINK_HERE')
-        
-        OPTION 2: Direct Code Modification
-        Find this line above and replace with your link:
-        let lockerUrl = localStorage.getItem('lockerUrl') || '';
-        
-        Change to:
-        let lockerUrl = localStorage.getItem('lockerUrl') || 'YOUR_DOWNLOAD_LINK_HERE';
-        
-        OPTION 3: User Interface (Default)
-        Users will be prompted to enter the link when clicking download buttons
-        */
     </script>
 </body>
 </html>
